@@ -1,0 +1,29 @@
+body {
+  height: 100vh;
+  width: 100%;
+}
+h1 {
+}
+.game-area {
+  text-align: center;
+}
+.game-area_parameters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.game-mat {
+  height: 300px;
+  width: 50%;
+  transform: translate(50%, 50%);
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+
+  .card {
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+  }
+}
