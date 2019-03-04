@@ -21,7 +21,21 @@ a {
   background-repeat: none;
   background-size: cover;
 }
+.game-area_title {
+  font-family: "Rakkas", cursive;
+  height: 10vh;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 10px 0;
+  font-size: 3rem;
+}
 .game-area_parameters {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  height: 5vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -30,9 +44,9 @@ a {
 }
 
 .game-mat {
-  height: 75vh;
+  height: 80vh;
   width: 50%;
-  transform: translate(50%, 5%);
+  transform: translate(50%, 0%);
   display: grid;
   grid-template-columns: repeat(4, auto);
   border: 3px solid black;
@@ -55,11 +69,10 @@ a {
   transform-style: preserve-3d;
 }
 
-.card:hover .card_content {
+.chosen {
   transform: rotateY(180deg);
   transition: transform 0.5s;
 }
-
 .card_front,
 .card_back {
   position: absolute;
