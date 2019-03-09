@@ -1,4 +1,4 @@
-let DBZcardBack = [
+let DBZcardFont = [
   {
     img: "",
     num: 1

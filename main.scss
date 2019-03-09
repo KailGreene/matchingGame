@@ -69,7 +69,7 @@ a {
   transform-style: preserve-3d;
 }
 
-.chosen {
+.chosen .card_content {
   transform: rotateY(180deg);
   transition: transform 0.5s;
 }
