@@ -6,11 +6,15 @@ const cards = [...card];
 //game board
 class gameMat {
   constructor(board, win, turn, time, score) {
-    board = this.board;
-    win = this.win;
-    turn = this.turn;
-    time = this.time;
-    score = this.score;
+    this.board = board;
+    this.win = win;
+    this.turn = turn;
+    this.time = time;
+    this.score = score;
+  }
+  //get turn
+  getTurn() {
+    return this.turn;
   }
   //populate game board
   populate = () => {
@@ -39,9 +43,9 @@ for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", chosen);
 }
 // initialize board
-let gameMat1 = new gameMat([], false, 1, 0, 0);
+let gameMat1 = new gameMat(Array(12).fill(null), false, 1, 0, 0);
 
-console.log(gameMat1);
+console.log(gameMat1.getTurn);
 //start game if board win state is false
 let startGame = board => {
   if (win != true) {
