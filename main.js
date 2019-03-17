@@ -5,7 +5,7 @@ const card = document.querySelectorAll(".card");
 const cards = [...card];
 //game board
 class gameMat {
-  constructor(board = [], win = false, turn = 1, time = 0, score = 0) {
+  constructor(board, win, turn, time, score) {
     board = this.board;
     win = this.win;
     turn = this.turn;
@@ -13,10 +13,12 @@ class gameMat {
     score = this.score;
   }
   //populate game board
-  populate = () => {};
+  populate = () => {
+    this.board = Array(12).fill(null);
+  };
 
   //reset game state
-  countUp = num => num + 1;
+  countUp = turn => this.turn + 1;
   //start timer
   trackTime = () => {};
   //increase score
@@ -36,7 +38,10 @@ let chosen = function() {
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", chosen);
 }
-let gameMat1 = new gameMat();
+// initialize board
+let gameMat1 = new gameMat([], false, 1, 0, 0);
+
+console.log(gameMat1);
 //start game if board win state is false
 let startGame = board => {
   if (win != true) {
