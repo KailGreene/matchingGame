@@ -12,27 +12,29 @@ class gameMat {
     this.time = time;
     this.score = score;
   }
-  //get turn
-  getTurn() {
-    return this.turn;
-  }
-  //populate game board
-  populate = () => {
-    this.board = Array(12).fill(null);
-  };
 
-  //reset game state
-  countUp = turn => this.turn + 1;
-  //start timer
-  trackTime = () => {};
-  //increase score
-  increaseScore = () => {};
-  //moves turns if pick was wrong lay down cards if not stay revealed
-  moveTurn = () => {};
-  //lockboard
-  lockboard = () => {};
-  //lock cards after pick
+  //get turn
+  getTurn = () => {
+    return this.turn;
+  };
 }
+//populate game board
+populate = () => {};
+
+//reset game state
+countUp = gameMat => {
+  gameMat.turn = gameMat.turn + 1;
+};
+//start timer
+trackTime = () => {};
+//increase score
+increaseScore = () => {};
+//moves turns if pick was wrong lay down cards if not stay revealed
+moveTurn = () => {};
+//lockboard
+lockboard = () => {};
+//lock cards after pick
+
 //add chosen class to cards
 
 let chosen = function() {
@@ -45,12 +47,15 @@ for (let i = 0; i < cards.length; i++) {
 // initialize board
 let gameMat1 = new gameMat(Array(12).fill(null), false, 1, 0, 0);
 
-console.log(gameMat1.getTurn);
+countUp(gameMat1);
+gameMat1.turn = gameMat1.turn + 1;
+console.log(gameMat1.getTurn());
+
 //start game if board win state is false
 let startGame = board => {
   if (win != true) {
     while (win != true) {
-      this.board.populate();
+      this.gameMat.populate();
     }
   }
 };
