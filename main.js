@@ -3,6 +3,9 @@ const moves = document.querySelector(".moves_num");
 const reset = document.querySelector(".reset_btn");
 const card = document.querySelectorAll(".card");
 const cards = [...card];
+
+let isFlipped = false;
+let firstPick, secondPick;
 //game board
 class gameMat {
   constructor(board, win, turn, time, score) {
@@ -18,44 +21,82 @@ class gameMat {
     return this.turn;
   };
 }
-//populate game board
-populate = () => {};
 
-//reset game state
+let DBZcardFont = [
+  {
+    img: "gokuProfile.jpg",
+    num: 1
+  },
+  {
+    img: "vegetaProfile.jpg",
+    num: 2
+  },
+  {
+    img: "krillinProfile.jpg",
+    num: 3
+  },
+  {
+    img: "piccolo.jpg",
+    num: 4
+  },
+  {
+    img: "bulmaProfile.jpg",
+    num: 5
+  },
+  {
+    img: "gohanProfile.jpg",
+    num: 6
+  }
+];
+//populate game board
+populate = gameMat => {
+  gameMat.board.forEach(element => {
+    if (element == null) {
+    }
+  });
+};
+
+//increase turn
 countUp = gameMat => {
   gameMat.turn = gameMat.turn + 1;
 };
-//start timer
+//timer
 trackTime = () => {};
 //increase score
 increaseScore = () => {};
-//moves turns if pick was wrong lay down cards if not stay revealed
-moveTurn = () => {};
 //lockboard
 lockboard = () => {};
 //lock cards after pick
 
 //add chosen class to cards
 
-let chosen = function() {
+let flipCard = function() {
   this.classList.toggle("chosen");
+
+  if (!isFlipped) {
+    isFlipped = true;
+    firstPick = this;
+  } else {
+    secondPick = this;
+    isFlipped = false;
+  }
 };
 
 for (let i = 0; i < cards.length; i++) {
-  cards[i].addEventListener("click", chosen);
+  cards[i].addEventListener("click", flipCard);
 }
 // initialize board
 let gameMat1 = new gameMat(Array(12).fill(null), false, 1, 0, 0);
 
 countUp(gameMat1);
 gameMat1.turn = gameMat1.turn + 1;
-console.log(gameMat1.getTurn());
-
+time.textContent = gameMat1.time;
 //start game if board win state is false
-let startGame = board => {
+let startGame = gameMat => {
   if (win != true) {
-    while (win != true) {
-      this.gameMat.populate();
+    populate(gameMat);
+    while (gameMat.win != true) {
+      time.textContent = gameMat.time;
     }
   }
 };
