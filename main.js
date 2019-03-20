@@ -9,11 +9,11 @@ let firstPick, secondPick;
 //game board
 class gameMat {
   constructor(board, win, turn, time, score) {
-    this.board = board;
-    this.win = win;
-    this.turn = turn;
-    this.time = time;
-    this.score = score;
+    this.board = Array(12).fill(null);
+    this.win = false;
+    this.turn = 0;
+    this.time = 0;
+    this.score = 0;
   }
 
   //get turn
@@ -86,11 +86,12 @@ for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", flipCard);
 }
 // initialize board
-let gameMat1 = new gameMat(Array(12).fill(null), false, 1, 0, 0);
+let gameMat1 = new gameMat();
 
 countUp(gameMat1);
 gameMat1.turn = gameMat1.turn + 1;
 time.textContent = gameMat1.time;
+console.log(gameMat1.board);
 //start game if board win state is false
 let startGame = gameMat => {
   if (win != true) {
