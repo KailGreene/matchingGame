@@ -2,6 +2,7 @@ const time = document.querySelector(".time_num");
 const moves = document.querySelector(".moves_num");
 const reset = document.querySelector(".reset_btn");
 const card = document.querySelectorAll(".card");
+const dificultySelect = document.querySelector("");
 const cards = [...card];
 
 let isFlipped = false;
@@ -19,6 +20,10 @@ class gameMat {
   //get turn
   getTurn = () => {
     return this.turn;
+  };
+
+  turnUp = () => {
+    this.turn = this.turn + 1;
   };
 }
 
@@ -57,7 +62,7 @@ populate = gameMat => {
 };
 
 //increase turn
-countUp = gameMat => {
+turnUp = gameMat => {
   gameMat.turn = gameMat.turn + 1;
 };
 //timer
@@ -85,13 +90,28 @@ let flipCard = function() {
 for (let i = 0; i < cards.length; i++) {
   cards[i].addEventListener("click", flipCard);
 }
-// initialize board
-let gameMat1 = new gameMat();
 
-countUp(gameMat1);
-gameMat1.turn = gameMat1.turn + 1;
+//difficulties
+
+switch (dificultySelect) {
+  case 1:
+    let gameMat1 = new gameMat();
+    break;
+  case 2:
+    let gameMat1 = new gameMat();
+    let gameMat2 = new gameMat();
+    break;
+  case 3:
+    let gameMat1 = new gameMat();
+    let gameMat2 = new gameMat();
+    let gameMat3 = new gameMat();
+}
+// initialize board
+//test board
+let testBoard = new gameMat();
 time.textContent = gameMat1.time;
-console.log(gameMat1.board);
+gameMat1.turnUp();
+console.log(gameMat1.turn);
 //start game if board win state is false
 let startGame = gameMat => {
   if (win != true) {
