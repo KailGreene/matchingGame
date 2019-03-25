@@ -2,7 +2,7 @@ const time = document.querySelector(".time_num");
 const moves = document.querySelector(".moves_num");
 const reset = document.querySelector(".reset_btn");
 const card = document.querySelectorAll(".card");
-const dificultySelect = document.querySelector("");
+//const dificultySelect = document.querySelector(".difficulty");
 const cards = [...card];
 
 let isFlipped = false;
@@ -74,17 +74,30 @@ lockboard = () => {};
 //lock cards after pick
 
 //add chosen class to cards
-
+let checkMatch = (firstPick, secondPick) => {
+  if (firstPick.src === secondPick.src) {
+    //lock  the cards by removing event listner and add point to the score
+    firstPick.removeEventListner("click", flipCard);
+  } else {
+    ///flip cards back over by removing chosen
+  }
+};
 let flipCard = function() {
   this.classList.toggle("chosen");
 
   if (!isFlipped) {
     isFlipped = true;
     firstPick = this;
+    console.log(firstPick);
+    console.log(firstPick.src);
   } else {
     secondPick = this;
     isFlipped = false;
+    console.log(secondPick);
+    console.log(secondPick.src);
   }
+
+  //checkMatch(firstPick, secondPick);
 };
 
 for (let i = 0; i < cards.length; i++) {
@@ -92,26 +105,23 @@ for (let i = 0; i < cards.length; i++) {
 }
 
 //difficulties
-
-switch (dificultySelect) {
-  case 1:
+let selectDifficulty = () => {
+  if (dificultySelect === 1) {
     let gameMat1 = new gameMat();
-    break;
-  case 2:
+  } else if (difficultySelect === 2) {
     let gameMat1 = new gameMat();
     let gameMat2 = new gameMat();
-    break;
-  case 3:
+  } else {
     let gameMat1 = new gameMat();
     let gameMat2 = new gameMat();
     let gameMat3 = new gameMat();
-}
-// initialize board
+  }
+};
 //test board
 let testBoard = new gameMat();
-time.textContent = gameMat1.time;
-gameMat1.turnUp();
-console.log(gameMat1.turn);
+time.textContent = testBoard.time;
+testBoard.turnUp();
+console.log(testBoard.turn);
 //start game if board win state is false
 let startGame = gameMat => {
   if (win != true) {
