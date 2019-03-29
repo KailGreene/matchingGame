@@ -56,7 +56,7 @@ let DBZcardFont = [
 //populate game board
 populate = gameMat => {
   gameMat.board.forEach(element => {
-    if (element == null) {
+    if (element === null) {
     }
   });
 };
@@ -69,17 +69,13 @@ turnUp = gameMat => {
 trackTime = () => {};
 //increase score
 increaseScore = () => {};
-//lockboard
-lockboard = () => {};
-//lock cards after pick
 
 //add chosen class to cards
 let checkMatch = (firstPick, secondPick) => {
   if (firstPick.src === secondPick.src) {
-    //lock  the cards by removing event listner and add point to the score
-    firstPick.removeEventListner("click", flipCard);
+    return true;
   } else {
-    ///flip cards back over by removing chosen
+    return false;
   }
 };
 let flipCard = function() {
@@ -97,7 +93,11 @@ let flipCard = function() {
     console.log(secondPick.src);
   }
 
-  //checkMatch(firstPick, secondPick);
+  if (checkMatch(firstPick, secondPick) === true) {
+    //lock  the cards by removing event listner and add point to the score
+    firstPick.removeEventListner("click", flipCard);
+    secondPick.removeEventListner("click", flipCard);
+  }
 };
 
 for (let i = 0; i < cards.length; i++) {

@@ -120,7 +120,7 @@ a {
 }
 
 .card_back {
-  background: blue;
+  background-image: url(img/DragonBall/goku.jpg);
   color: white;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
